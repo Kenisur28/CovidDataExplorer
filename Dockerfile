@@ -5,8 +5,8 @@ RUN export DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get -y upgrade
 
-RUN apt-get -y install apache2
-RUN apt-get -y install apache2-dev
+#RUN apt-get -y install apache2
+#RUN apt-get -y install apache2-dev
 
 
 RUN yes | pip install --upgrade pip

@@ -15,7 +15,7 @@ COPY requirements.txt ./app/requirements.txt
 COPY . ./app/
 WORKDIR ./app/
 
-RUN yes | pip -y install --upgrade pip
+RUN yes | pip install --upgrade pip
 EXPOSE 8080 
 COPY requirements.txt /app/requirements.txt
 RUN yes | pip install -r requirements.txt

@@ -11,14 +11,10 @@ RUN apt-get update && apt-get -y upgrade
 
 RUN yes | pip install --upgrade pip
 
-COPY requirements.txt ./app/requirements.txt
-COPY . ./app/
-WORKDIR ./app/
-
+COPY . .
 RUN yes | pip install --upgrade pip
 EXPOSE 8080 
-COPY requirements.txt /app/requirements.txt
-RUN yes | pip install -r requirements.txt
+RUN yes | pip install -r ./covid_app/requirements.txt
 
 
-CMD gunicorn -b 127.0.0.1:80 wsgi
+CMD gunicorn -b 127.0.0.1:80 ./covid_app/wsgi

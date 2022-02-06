@@ -10,7 +10,6 @@ RUN apt-get update && apt-get -y upgrade
 
 
 RUN yes | pip install --upgrade pip
-RUN yes | pip install --upgrade pip
 EXPOSE 8080 
 
 COPY . ./app

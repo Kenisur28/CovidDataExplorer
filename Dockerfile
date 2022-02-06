@@ -1,22 +1,24 @@
 FROM python:3.9
+RUN export DEBIAN_FRONTEND=noninteractive
 
 # Create Virtual Environment
 
-RUN apt update
-RUN apt install apache2
-RUN apt install apache2-dev
+RUN apt-get update && sudo apt-get -y upgrade
+
+RUN apt-get -y install apache2
+RUN apt-get -y install apache2-dev
 
 
-RUN pip install --upgrade pip
+RUN yes | pip install --upgrade pip
 
 COPY requirements.txt ./app/requirements.txt
 COPY . ./app/
 WORKDIR ./app/
 
-RUN pip install --upgrade pip
+RUN yes | pip -y install --upgrade pip
 EXPOSE 8080 
 COPY requirements.txt /app/requirements.txt
-RUN python -m pip install -r requirements.txt
+RUN yes | pip install -r requirements.txt
 
 
 CMD gunicorn -b 127.0.0.1:80 wsgi

@@ -3,7 +3,7 @@ RUN export DEBIAN_FRONTEND=noninteractive
 
 # Create Virtual Environment
 
-RUN apt-get update && sudo apt-get -y upgrade
+RUN apt-get update && apt-get -y upgrade
 
 RUN apt-get -y install apache2
 RUN apt-get -y install apache2-dev

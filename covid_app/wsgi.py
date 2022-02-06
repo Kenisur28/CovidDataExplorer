@@ -1,4 +1,4 @@
-from covid-app.covidApp import my_app as app
+from covid_app.covidApp import my_app as app
 
 
 

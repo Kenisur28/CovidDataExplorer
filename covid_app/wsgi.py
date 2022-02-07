@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from covidApp.covidApp import my_app as app
+from covidApp import my_app as app
 
 
 

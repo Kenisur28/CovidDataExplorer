@@ -111,8 +111,8 @@ def update_graph(option_select_day):
 
 
  
-
-    
+if __name__ == "__main__":
+    my_app.run_server(debug=True)
     
 
 

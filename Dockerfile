@@ -21,4 +21,4 @@ EXPOSE 8080
 RUN yes | pip install -r ./requirements.txt
 RUN chmod +x /covid_app/covidApp.py
 WORKDIR /covid_app
-CMD gunicorn -b 127.0.0.1:80 covidApp:server
+CMD gunicorn -b 127.0.0.1:80 covidApp:my_server

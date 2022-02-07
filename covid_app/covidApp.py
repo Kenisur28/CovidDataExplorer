@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import pandas as pd
 import plotly.express as px  # (version 4.7.0 or higher)
 import dash_bootstrap_components as dbc

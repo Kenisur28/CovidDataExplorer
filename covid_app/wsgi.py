@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from covid_app.covidApp import my_app as app
 
 

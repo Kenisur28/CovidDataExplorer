@@ -73,22 +73,25 @@ my_app.layout = html.Div(id="Base", children=[
     dcc.Slider(
         id='my-slider',
         min=0,
-        max=max(ints_cols_2),
+        max=651,
         step=7,
         value=1,
-        marks={i: f"{int(i / 7)}".format(int(i / 7)) for i in range(0, max(ints_cols_2), 7)}
+        #marks={i: f"{int(i / 7)}".format(int(i / 7)) for i in range(0, max(ints_cols_2), 7)}
+        # For now just hardcose limit on tick marks.
+        marks={i: f"{int(i / 7)}".format(int(i / 7)) for i in range(0, 651, 7)}
+
     ),
 
     html.Div(id="container2", className='seven columns div-for-charts bg-grey', children=[
         dcc.Graph(id="choropleth",
-                  style={'display': 'inline-block', 'width': '90%', 'height': '77.7%', "margin-top": "30px",
+                  style={'display': 'inline-block', 'width': '75%', 'height': '77.7%', "margin-top": "30px",
                          "margin-left": "60px"}),
         html.Div(id="container1", className='four columns div-user-controls', children=[
             dcc.Graph(id="covid_cases_timeseries",
-                      style={'display': 'inline-block', 'width': '100%', 'height': '35%', "margin-top": "30px"}),
+                      style={'display': 'inline-block', 'width': '75%', 'height': '35%', "margin-top": "30px"}),
             html.Div(id="graph2", children=[
                 dcc.Graph(id="covid_deaths_timeseries",
-                          style={'display': 'inline-block', 'width': '100%', 'height': '35%', }),
+                          style={'display': 'inline-block', 'width': '75%', 'height': '35%', }),
             ])
         ])
 
@@ -112,7 +115,7 @@ def update_graph(option_select_day):
 
  
 if __name__ == "__main__":
-    my_app.run_server(debug=True)
+    my_app.run_server()
     
 
 

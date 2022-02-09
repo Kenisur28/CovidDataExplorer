@@ -103,8 +103,8 @@ my_app.layout = html.Div(id="Base", children=[
 # Connect the Plotly graphs with Dash Components
 @my_app.callback(
     Output(component_id='choropleth', component_property='figure'),
-    Output(component_id='covid_deaths_timeseries', component_property='figure'),
-    Output(component_id='covid_cases_timeseries', component_property='figure'),
+    #Output(component_id='covid_deaths_timeseries', component_property='figure'),
+    #Output(component_id='covid_cases_timeseries', component_property='figure'),
     Input(component_id='my-slider', component_property='value')
 )
 # Update function

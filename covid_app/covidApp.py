@@ -84,14 +84,14 @@ my_app.layout = html.Div(id="Base", children=[
 
     html.Div(id="container2", className='seven columns div-for-charts bg-grey', children=[
         dcc.Graph(id="choropleth",
-                  style={'display': 'inline-block', 'width': '75%', 'height': '77.7%', "margin-top": "30px",
+                  style={'display': 'inline-block', 'width': '65%', 'height': '50%', "margin-top": "10px",
                          "margin-left": "60px"}),
         html.Div(id="container1", className='four columns div-user-controls', children=[
             dcc.Graph(id="covid_cases_timeseries",
-                      style={'display': 'inline-block', 'width': '75%', 'height': '35%', "margin-top": "30px"}),
+                      style={'display': 'inline-block', 'width': '50%', 'height': '35%', "margin-top": "10px"}),
             html.Div(id="graph2", children=[
                 dcc.Graph(id="covid_deaths_timeseries",
-                          style={'display': 'inline-block', 'width': '75%', 'height': '35%', }),
+                          style={'display': 'inline-block', 'width': '50%', 'height': '35%', }),
             ])
         ])
 

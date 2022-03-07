@@ -9,6 +9,7 @@ from urllib.request import urlopen
 from COVIDAppUtils import draw_plot
 from decouple import config
 from flask import Flask
+import pdb
 
 # Path where covid cases timeseries is stored
 COVID_CASES_PATH = config('COVID_CASES_PATH')
@@ -50,18 +51,17 @@ first_date = df.columns[11:][0]
 # Here I am assigning each date in the time series a raw day number
 # i.e. 1/20/2020 -> day 1
 # 1/21/2020 -> day 2 .... etc
+# TODO improve performance
 
-columns = list(df.columns.values[11:])
-columns_2 = np.arange(0, len(columns)).astype(str)
+columns_2 = np.arange(0, len(df.columns.values[11:])).astype(str)
 columns = df.columns.values
 columns[11:] = columns_2
 df.columns = columns
-d_columns = list(df_deaths.columns.values[11:])
-d_columns_2 = np.arange(0, len(d_columns)).astype(str)
+d_columns_2 = np.arange(0, len(df_deaths.columns.values[11:])).astype(str)
 d_columns = df_deaths.columns.values
 d_columns[11:] = d_columns_2
 df_deaths.columns = d_columns
-ints_cols_2 = [int(x) for x in columns_2]
+
 
 # -----------------------------------------------------------------------------------
 # App layout
@@ -84,14 +84,14 @@ my_app.layout = html.Div(id="Base", children=[
 
     html.Div(id="container2", className='seven columns div-for-charts bg-grey', children=[
         dcc.Graph(id="choropleth",
-                  style={'display': 'inline-block', 'width': '45%', 'height': '80%', "margin-top": "10px",
+                  style={'display': 'inline-block', 'width': '90%', 'height': '80%', "margin-top": "10px",
                          "margin-left": "60px"}),
         html.Div(id="container1", className='four columns div-user-controls', children=[
             dcc.Graph(id="covid_cases_timeseries",
-                      style={'display': 'inline-block', 'width': '50%', 'height': '35%', "margin-top": "10px"}),
+                      style={'display': 'inline-block', 'width': '70%', 'height': '35%', "margin-top": "10px"}),
             html.Div(id="graph2", children=[
                 dcc.Graph(id="covid_deaths_timeseries",
-                          style={'display': 'inline-block', 'width': '50%', 'height': '35%', }),
+                          style={'display': 'inline-block', 'width': '70%', 'height': '35%', }),
             ])
         ])
 
@@ -103,8 +103,8 @@ my_app.layout = html.Div(id="Base", children=[
 # Connect the Plotly graphs with Dash Components
 @my_app.callback(
     Output(component_id='choropleth', component_property='figure'),
-    #Output(component_id='covid_deaths_timeseries', component_property='figure'),
-    #Output(component_id='covid_cases_timeseries', component_property='figure'),
+    Output(component_id='covid_deaths_timeseries', component_property='figure'),
+    Output(component_id='covid_cases_timeseries', component_property='figure'),
     Input(component_id='my-slider', component_property='value')
 )
 # Update function
